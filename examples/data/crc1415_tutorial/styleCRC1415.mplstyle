@@ -1,0 +1,114 @@
+# see https://matplotlib.org/stable/users/explain/customizing.html#customizing-with-style-sheets
+
+text.usetex : True 
+
+font.size : 15
+
+## ***************************************************************************
+## * TICKS                                                                   *
+## ***************************************************************************
+xtick.direction : in
+ytick.direction : in
+
+xtick.minor.size : 5
+xtick.major.size : 10
+
+ytick.minor.size : 5
+ytick.major.size : 10
+
+xtick.top : True
+ytick.right : True
+
+xtick.labelsize:     20  # font size of the x-tick labels
+ytick.labelsize:     20  # font size of the y-tick labels
+
+
+## ***************************************************************************
+## * LINES                                                                   *
+## ***************************************************************************
+lines.linewidth: 3.0               # line width in points
+#lines.linestyle: -                 # solid line
+#lines.color:     C0                # has no affect on plot(); see axes.prop_cycle
+#lines.marker:          None        # the default marker
+#lines.markerfacecolor: auto        # the default marker face color
+lines.markeredgecolor: black        # the default marker edge color
+lines.markeredgewidth: 1.5         # the line width around the marker symbol
+lines.markersize:      14           # marker size, in points
+#lines.dash_joinstyle:  round       # {miter, round, bevel}
+#lines.dash_capstyle:   butt        # {butt, round, projecting}
+#lines.solid_joinstyle: round       # {miter, round, bevel}
+#lines.solid_capstyle:  projecting  # {butt, round, projecting}
+#lines.antialiased: True            # render lines in antialiased (no jaggies)
+
+lines.dashed_pattern: 3.7, 1.6
+lines.dashdot_pattern: 6.4, 1.6, 1, 1.6
+lines.dotted_pattern: 1, 1.65
+lines.scale_dashes: True
+
+## ***************************************************************************
+## * SCATTER PLOTS                                                           *
+## ***************************************************************************
+#scatter.marker: o            # The default marker type for scatter plots.
+scatter.edgecolors: black     # The default edge colors for scatter plots.
+
+## ***************************************************************************
+## * FONT                                                                  *
+## ***************************************************************************
+## The font.family property can take either a single or multiple entries of any
+## combination of concrete font names (not supported when rendering text with
+## usetex) or the following five generic values:
+##     - 'serif' (e.g., Times),
+##     - 'sans-serif' (e.g., Helvetica),
+##     - 'cursive' (e.g., Zapf-Chancery),
+##     - 'fantasy' (e.g., Western), and
+##     - 'monospace' (e.g., Courier).
+## Each of these values has a corresponding default list of font names
+## (font.serif, etc.); the first available font in the list is used.  Note that
+## for font.serif, font.sans-serif, and font.monospace, the first element of
+## the list (a DejaVu font) will always be used because DejaVu is shipped with
+## Matplotlib and is thus guaranteed to be available; the other entries are
+## left as examples of other possible values.
+
+#font.family:   sans-serif
+font.family:   Helvetica
+#font.style:   normal
+#font.variant: normal
+#font.weight:  normal
+#font.stretch: normal
+#font.size:    10.0
+
+#font.serif:      DejaVu Serif, Bitstream Vera Serif, Computer Modern Roman, New Century Schoolbook, Century Schoolbook L, Utopia, ITC Bookman, Bookman, Nimbus Roman No9 L, Times New Roman, Times, Palatino, Charter, serif
+#font.sans-serif: DejaVu Sans, Bitstream Vera Sans, Computer Modern Sans Serif, Lucida Grande, Verdana, Geneva, Lucid, Arial, Helvetica, Avant Garde, sans-serif
+#font.cursive:    Apple Chancery, Textile, Zapf Chancery, Sand, Script MT, Felipa, Comic Neue, Comic Sans MS, cursive
+#font.fantasy:    Chicago, Charcoal, Impact, Western, xkcd script, fantasy
+#font.monospace:  DejaVu Sans Mono, Bitstream Vera Sans Mono, Computer Modern Typewriter, Andale Mono, Nimbus Mono L, Courier New, Courier, Fixed, Terminal, monospace
+
+## ***************************************************************************
+## * LEGEND                                                                  *
+## ***************************************************************************
+legend.numpoints: 2
+legend.markerscale:   0.75     # the relative size of legend markers vs. original
+legend.fontsize:      20
+
+errorbar.capsize: 10
+
+## ***************************************************************************
+## * AXIS                                                                    *
+## ***************************************************************************
+xaxis.labellocation: center  # alignment of the xaxis label: {left, right, center}
+yaxis.labellocation: center  # alignment of the yaxis label: {bottom, top, center}
+
+axes.labelsize:     25      # font size of the x and y labels
+axes.labelpad:      4.0     # space between label and axis
+
+# cycles through the CRC1415 colors
+axes.prop_cycle: cycler('color', ['4679a7', '5591c7', '84aedc', 'b8cde8', 'bf9000', 'eeb500', 'ffd597', 'ffe2b7', '548235', '669e40', '8fbb77', 'acca9e', 'c41c00', 'ff654b', 'ffa293', 'ffd1c9'])
+
+## ***************************************************************************
+## * SAVING FIGURES                                                          *
+## ***************************************************************************
+### ps backend params
+ps.papersize:      A4  # {figure, letter, legal, ledger, A0-A10, B0-B10}
+figure.dpi: 150
+savefig.transparent: False     # whether figures are saved with a transparent - background by default
+
