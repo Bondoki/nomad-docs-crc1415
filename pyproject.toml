@@ -6,6 +6,7 @@ readme = "README.md"
 authors = [{ name = "Ahmed Ilyas", email = "ahmed.n.ilyas@gmail.com" }]
 requires-python = ">=3.10"
 dependencies = [
+    'nomad-lab @ git+https://gitlab.hrz.tu-chemnitz.de/s5440027-at-tu-dresden.de/nomad-lab.git@0753d0226541538c0f6aad2c6ba6cd0b7f92eea7',
     'mkdocs-click',
     'mkdocs-git-revision-date-localized-plugin',
     'mkdocs-glightbox',
@@ -20,7 +21,6 @@ dependencies = [
 
 [tool.uv]
 extra-index-url = [
-    "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple",
 ]
 
 [build-system]
