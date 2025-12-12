@@ -1,3 +1,5 @@
+# Write a normalizer
+
 ## The `update_entry` method
 
 The root context, which is available from the `.m_context` of a `EntryArchive`, which could be accessed via `section.m_root().m_context` if `section` is attached to a `EntryArchive`, provides the functionality to update/create child entries on-the-fly and invoke the processing if necessary.
@@ -70,7 +72,7 @@ However, this is not recommended due to various security concerns.
 
 The following caveats must be acknowledged when using this method:
 
-1. The specific logic of creating/updating the file must be re-entrant safe, see [details](https://en.wikipedia.org/wiki/Reentrancy_(computing)).
+1. The specific logic of creating/updating the file must be re-entrant safe, see [details](https://en.wikipedia.org/wiki/Reentrancy_(computing)){:target="_blank" rel="noopener"}.
    To put simply, the first call and subsequent calls must yield the same result regardless of what is already stored in the file.
 2. A child entry must **not** be accessed by multiple parent entries.
    Because the parent entries are processed in parallel (by multiple `celery` workers), there is a risk of racing conditions if the child entry is accessed by multiple parent entries.

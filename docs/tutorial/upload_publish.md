@@ -37,15 +37,15 @@ You can create a user account by following these [steps](overview.md#create-a-no
         - **Organization:** Datasets contains several entries from various uploads. One entry can be contained in many dataset.
         - **Sharing & Publishing:** Datasets are published independent of uploads and you can get a DOI for your datasets.
 
-For more detailed explanation, you can refer to this [page](/explanation/basics.html).
+For more detailed explanation, you can refer to this [page](../explanation/basics.md).
 
------------------------------
+---
 
 ## Create New Upload
 
 The uploads exist in the *Your uploads* page. Here you can view a list of all your uploads with their relevant information. You can also create new uploads or add an example upload prepared by others.
 
-Follow these steps to create your first upload (click on the arrows to navigate between steps):
+**Use the arrow buttons ⬅️➡️ below to follow the steps for creating your first upload.**
 
 <div class="image-slider" id="slider1">
     <div class="nav-arrow left" id="prev1">←</div>
@@ -56,7 +56,6 @@ Follow these steps to create your first upload (click on the arrows to navigate 
     <div class="nav-arrow right" id="next1">→</div>
 </div>
 
-
 ??? info "Two different views of the **upload** page"
     At the very top of the upload page, you can toggle between two different views for this page:
 
@@ -65,10 +64,44 @@ Follow these steps to create your first upload (click on the arrows to navigate 
     - **Files:** This view shows all the files included in upload, whether they are raw files or processed files. You can also organize these files into folders as needed.
     ![A screenshot of the uploads files page](images/upload_publish_8.png)
 
+??? info "Icons on the upload overview"
 
---------------------
+    At the top of the `OVERVIEW` tab, you will find several icons that help you to manage your upload:
 
-## Share Your Upload
+    ![Top fields in uploads page](images/top_fields_uploads.png){.screenshot}
+
+    The name of the upload can be modified by clicking on the pen icon :fontawesome-solid-pen:. The other icons are used as follows:
+
+    :fontawesome-solid-user-group: **Manage members:** Allows users to invite collaborators by assigning co-authors and reviewers roles.
+
+    :fontawesome-solid-cloud-arrow-down: **Download files:** Downloads all files present in the upload.
+
+    :fontawesome-solid-rotate-left: **Reload:** Reloads the uploads page.
+
+    :fontawesome-solid-rotate: **Reprocess:** Triggers the uploaded data to be processed again.
+
+    :fontawesome-solid-angle-left::fontawesome-solid-angle-right: **API:** Displays a GET request url and corresponding JSON response demonstrating how to access the entries of the upload via the [NOMAD API](./access_api.md) and the expected result, respectively.
+    <!-- See [Filtering and Querying](../filtering_and_querying/overview.md) for more information. -->
+    <!-- TODO  Add API to glossary -->
+
+    :fontawesome-solid-trash: **Delete the upload:** Deletes the upload permanently.
+
+??? info "Components of the upload overview"
+    The remainder of the uploads page is divided into five segments, each presenting a step in the uploading and publishing process:
+
+    `1. Prepare and upload your files:` displays the files and folder structure of the upload. You can add a `README.md` file to the root directory and its contents will be shown above this section
+
+    `2. Process data:` shows the processed data and the generated [entries](../reference/glossary.md#entry) in NOMAD.
+
+    `3. Edit visibility and access:` allows users to make the upload public or share it with specific users before publishing.
+
+    `4. Edit author metadata:` allows users to edit certain metadata fields from all entries recognized in the upload. This includes _comments_, where you can add as much extra information as you want, _references_, where you can add a URL to your upload (e.g., an article DOI), and _datasets_, where you can link the uploaded data to other uploads to define a larger-scale organizational structure (see [Group entries into a dataset](#group-entries-into-a-dataset) below.)
+
+    `5. Publish:` lets users publish data with or without an embargo (i.e., a waiting period before the data are publicly visible).
+
+---
+
+## Sharing and Publishing Uploads
 
 Uploads in NOMAD can be shared or published. When an upload is shared or published, all entries and files contained within it are also shared or published.
 
@@ -147,7 +180,7 @@ Alternatively, you can click the `EDIT UPLOAD MEMBERS` button below the list of 
 
     ![screenshot of an embargoed upload](images/embargoed_upload.png)
 
------------------------
+---
 
 ## Add Files to an Upload
 
@@ -183,7 +216,8 @@ Files can be added to an upload individually, or you can group them into a compr
 ### Uploading Miscellaneous Files
 
 ??? example "Download the example files for this exercise"
-    We have prepared a set of files for this task that can be downloaded from this [link](https://github.com/FAIRmat-NFDI/FAIRmat-tutorial-16/raw/refs/heads/main/tutorial_16_materials/part_3_files/example_files_upload/miscellaneous_data/miscellaneous_data.zip).
+    <!-- TODO consider changing this admonition to a download button -->
+    [Download example data ZIP](https://github.com/FAIRmat-NFDI/FAIRmat-tutorial-16/raw/refs/heads/main/tutorial_16_materials/part_3_files/example_files_upload/miscellaneous_data/miscellaneous_data.zip){:target="_blank" rel="noopener"}.
 
     Download the folder, then uncompress it on your local machine at you preferred directory.
 
@@ -197,8 +231,6 @@ Files can be added to an upload individually, or you can group them into a compr
     | P3HT_optical_absorption        | .csv   | Results of absorption measurement on P3HT from PerkinElmer spectrometer     |
     | note_properties_of_good_dopants| .txt   | Notes recorded during a conference talk                                     |
     | experiment_polymer_doping      | .jpg   | A photograph of an experiment of preparing doped polymer solutions          |
-
-
 
 Note that these files will not create entries in NOMAD, because a built-in parser for them doesn't exist.
 
@@ -221,18 +253,17 @@ You can add these files to your NOMAD upload. Do so by simply drag and drop the 
 
     ![An animatation demonstrating the open from file browser dialog in NOMAD ](images/example_3-1_file_browser_dialog.gif)
 
-
 ### Uploading Computations Data
 
 ??? example "Download the example files for this exercise"
-    We have prepared a set of files for this task that can be downloaded from this [link](https://github.com/FAIRmat-NFDI/FAIRmat-tutorial-16/raw/refs/heads/main/tutorial_16_materials/part_3_files/example_files_upload/computations_data/FHI-aims.zip).
+    <!-- TODO consider changing this admonition to a download button -->
+    [Download example data ZIP](https://github.com/FAIRmat-NFDI/FAIRmat-tutorial-16/raw/refs/heads/main/tutorial_16_materials/part_3_files/example_files_upload/computations_data/FHI-aims.zip){:target="_blank" rel="noopener"}.
 
     Download the folder to your local machine at you preferred directory.
 
     This folder contains the input and output files of a DFT calculation for Iron(III) Oxide using the *FHI-aims* code.
 
-    FHI-aims* an all-electron density-functional-theory package that employs numeric atom-centered basis functions. It is designed for accurate and efficient simulations of molecules, clusters, surfaces, and bulk materials across the periodic table. Its advanced treatment of electronic structure allows for precise calculations of material properties, including band structures, total energies, and magnetic properties. [More information in this link](https://fhi-aims.org/)
-
+    FHI-aims* an all-electron density-functional-theory package that employs numeric atom-centered basis functions. It is designed for accurate and efficient simulations of molecules, clusters, surfaces, and bulk materials across the periodic table. Its advanced treatment of electronic structure allows for precise calculations of material properties, including band structures, total energies, and magnetic properties. [More information in this link](https://fhi-aims.org/){:target="_blank" rel="noopener"}
 
 The calculations in this example were preformed using a code that is supported by NOMAD, i.e. the *FHI-aims* code.
 
@@ -249,7 +280,7 @@ In other words, NOMAD will read the input and output files and provide all infor
     ![Animation of darg and droping a compressed file in NOMAD](images/example_3-2_drag_drop_files.gif)
 
     After uploading files, processing is automatically triggered. This involves identifying supported file formats in NOMAD and extracting relevant (meta)data. The exact processing steps depend on the use case.
-    For example, you can learn more about the [processing of computational data on this link](https://nomad-lab.eu/prod/v1/docs/examples/computational_data/uploading.html#processing-of-computational-data).
+    For example, you can learn more about the [processing of computational data on this link](https://nomad-lab.eu/prod/v1/docs/examples/computational_data/uploading.html#processing-of-computational-data){:target="_blank" rel="noopener"}.
 
     Once processing is complete, NOMAD generates an entry page that presents the data in a structured, hierarchical format based on the NOMAD *metainfo* schema.
 
@@ -269,13 +300,13 @@ In other words, NOMAD will read the input and output files and provide all infor
 
         For *FHI-aims* files, three main cards appear in the overview page:
 
-        - *Materials* card: shows key information and visulization of the composition and conventional cell.
+        - *Materials* card: Shows key information and visulization of the composition and conventional cell.
         <img src="images/example_3-2_materials_card.png" alt="screenshot of electronic properties card" width="250">
 
-        - *Electronic properties* card: shows the calculated band structure, density of states, and Brillouin zone.
+        - *Electronic properties* card: Shows the calculated band structure, density of states, and Brillouin zone.
         <img src="images/example_3-2_electronic_properties_card.png" alt="screenshot of materials card" width="250">
 
-        - *Workflow Graph* card: illustrates the various steps in the calculation, including their inputs and outputs.
+        - *Workflow Graph* card: Illustrates the various steps in the calculation, including their inputs and outputs.
         <img src="images/example_3-2_workflow_card.png" alt="screenshot of workflow card" width="250">
 
     - **FILES** tab:
@@ -295,7 +326,8 @@ In other words, NOMAD will read the input and output files and provide all infor
 ### Uploading Experimental Data
 
 ??? example "Download the example files for this exercise"
-    We have prepared a set of files for this task that can be downloaded from this [link](https://github.com/FAIRmat-NFDI/FAIRmat-tutorial-16/raw/refs/heads/main/tutorial_16_materials/part_3_files/example_files_upload/experiments_data/xps_nexus_data.zip).
+    <!-- TODO consider changing this admonition to a download button -->
+    [Download example data ZIP](https://github.com/FAIRmat-NFDI/FAIRmat-tutorial-16/raw/refs/heads/main/tutorial_16_materials/part_3_files/example_files_upload/experiments_data/xps_nexus_data.zip){:target="_blank" rel="noopener"}.
 
     Download the folder, then uncompress it to your local machine at you preferred directory.
 
@@ -308,7 +340,6 @@ In other words, NOMAD will read the input and output files and provide all infor
     | PBTTT_XPS_SPECS       | .nxs   | XPS data file in the standard NeXuS file format                  |
     | PBTTT_XPS_SPECS_raw   | .xml   | XPS data in a raw file format as produced by the spectrometer    |
     | ELN_data_xml          | .yaml  | An ELN file used to record additional metadata of the experiment |
-
 
 NOMAD supports experimental data files in the `.nxs` format.
 
@@ -356,7 +387,6 @@ These files can be uploaded directly to NOMAD, where they are processed, and str
 
         ![Animation of the DATA Tab in NeXuS entry page](images/example_3-3_data_tab_entry_page_nexus.gif)
 
-
 Most scientific instruments generate experimental results in formats other than `.nxs`. NOMAD still supports these files by providing a conversion process using the *NexusDataConverter* built-in schema, which transforms raw data into the `.nxs` format.
 
 ??? info "NexusDataConverter readers and the NeXuS application definitions"
@@ -365,11 +395,11 @@ Most scientific instruments generate experimental results in formats other than 
     The reader understands the structure and encoding of the particular data format and provides methods for accessing its contents in a programmatically friendly way.
     It acts as a bridge between raw experimental data and NOMAD by converting the data into the structured file format according to domain-specific application definitions.
 
-    A list of available readers can be found [here](https://fairmat-nfdi.github.io/pynxtools/reference/plugins.html)
+    A list of available readers can be found [here](https://fairmat-nfdi.github.io/pynxtools/reference/plugins.html){:target="_blank" rel="noopener"}
 
     **A NeXus application definition** provides a structured specification of the terms and metadata required in an `.nxs` data file for a particular scientific application. These definitions outline the minimum set of terms that must be included in the data file for it to be considered valid according to the NeXus format.
 
-    A list of NeXuS application definitions developed by FAIRmat can be found [here](https://fairmat-nfdi.github.io/nexus_definitions/)
+    A list of NeXuS application definitions developed by FAIRmat can be found [here](https://fairmat-nfdi.github.io/nexus_definitions/){:target="_blank" rel="noopener"}
 
     NexusDataConverter uses **readers** to interpret the raw data files, and then structures them according to the outlines of the **application definitions**
 
@@ -409,7 +439,6 @@ In the following examples, you will learn how to upload a raw file from a SPECS 
 
     ![Screenshot of the upload page after nexus conversion.](images/example_3-3_NexusDataConverter_3.png)
 
-
 ??? task "Uploading experimental data in the `.xml` format with additional ELN data"
 
     Often, raw files generated by instruments from various vendors lack complete metadata and essential details about the experiment.
@@ -420,7 +449,7 @@ In the following examples, you will learn how to upload a raw file from a SPECS 
 
     The ELN `.yaml` file can be generated by various ELN software tools or created manually using a text editor.
 
-    For each supported experimental raw file format, FAIRmat provides a template ELN `.yaml` file containing all necessary attributes and parameters to complement the raw file’s data. These templates can be found [here](https://github.com/FAIRmat-NFDI/pynxtools-xps/tree/a2e9524ae8479ffa9cde79daf2010161d8ae75c3/examples)
+    For each supported experimental raw file format, FAIRmat provides a template ELN `.yaml` file containing all necessary attributes and parameters to complement the raw file’s data. These templates can be found [here](https://github.com/FAIRmat-NFDI/pynxtools-xps/tree/a2e9524ae8479ffa9cde79daf2010161d8ae75c3/examples){:target="_blank" rel="noopener"}
 
     While these files can be edited with any text editor, we recommend using **VS Code** for an optimized editing experience.
 
@@ -459,7 +488,7 @@ In the following examples, you will learn how to upload a raw file from a SPECS 
 
     ![Screenshots of steps 5 - 9](images/example_3-3_NexusDataConverter_2(with_ELN).png)
 
-----------------
+---
 
 ## Create Datasets and Get a DOI
 
@@ -493,9 +522,9 @@ Alternatively, if you would like to add selected entries from your Upload, click
 User created datasets exist in the “Your datasets” page page. You can reach there by clicking on **Datasets** in the **PUBLISH** menu. Here you can view a list of all your created datasets with their relevant information and assign them a DOI.
 
 !!! warning "Assigning a DOI makes the dataset permanent—it cannot be modified or deleted."
-    If you want to test the process without actually publishing the data, you can do so in the [NOMAD test installation](https://nomad-lab.eu/prod/v1/test/gui/about/information).
+    If you want to test the process without actually publishing the data, you can do so in the [NOMAD test installation](https://nomad-lab.eu/prod/v1/test/gui/about/information){:target="_blank" rel="noopener"}.
 
-Follow these steps to explore and manage your datasets (click on the arrows to navigate between steps):
+**Use the arrow buttons ⬅️➡️ below to follow the steps of exploring and managing your datasets.**
 
 <div class="image-slider" id="slider2">
     <div class="nav-arrow left" id="prev2">←</div>
@@ -505,8 +534,7 @@ Follow these steps to explore and manage your datasets (click on the arrows to n
     <div class="nav-arrow right" id="next2">→</div>
 </div>
 
-To publish your datasets and assign them a DOI, follow these steps (click on the arrows to navigate between steps):
-
+**Use the arrow buttons ⬅️➡️ below to see how to publish your datasets and assign them a DOI.**
 <div class="image-slider" id="slider3">
     <div class="nav-arrow left" id="prev3">←</div>
     <img src="images/dataset_4.png" alt="screenshot of navigating to datasets" class="active">
@@ -515,4 +543,4 @@ To publish your datasets and assign them a DOI, follow these steps (click on the
     <div class="nav-arrow right" id="next3">→</div>
 </div>
 
---------------
+---

@@ -1,0 +1,81 @@
+name: Check mkdocs build and links in markdown files, and preview the docs
+
+on:
+  push:
+    branches: ["main"]
+    # tags: ["v*.*.*"]
+  pull_request:
+    branches: ["main"]
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+  workflow_dispatch: # Allows running this workflow manually
+
+env:
+  UV_VERSION: 0.6
+  PYTHON_VERSION: 3.12
+
+jobs:
+  lint-markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: DavidAnson/markdownlint-cli2-action@v20
+        with:
+          config: .github/workflows/configs/nomad.markdownlint.jsonc
+          globs: |
+            *.md
+            docs/**/*.md
+
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check links in markdown files
+        uses: tcort/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: 'yes'
+          config-file: .github/workflows/configs/markdown-link-check.json
+          folder-path: 'docs, examples'
+          file-path: './README.md'
+
+  test-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: ${{ env.UV_VERSION }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Check mkdocs build
+        run: |
+          uv run \
+            --with 'nomad-lab[infrastructure] @ https://gitlab.mpcdf.mpg.de/nomad-lab/nomad-FAIR.git' \
+            mkdocs build --strict
+
+      - name: Copy built docs
+        run: |
+          SITE_PACKAGES_DIR=$(uv run python -c "import sysconfig; print(sysconfig.get_paths()['purelib'])")
+
+          mkdir -p "$SITE_PACKAGES_DIR/nomad/app/static/docs"
+          cp -r site/. "$SITE_PACKAGES_DIR/nomad/app/static/docs"
+
+      - name: Pytest docs
+        run: |
+          uv run pytest tests
+
+      - name: Deploy PR Preview
+        if: github.event_name == 'pull_request'
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: site

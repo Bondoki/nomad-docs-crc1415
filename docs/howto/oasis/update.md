@@ -1,39 +1,19 @@
-# How to Update Oasis versions
+# How to update Oasis versions
 
 ## Software versions
 
-We distribute NOMAD as docker images that are available in our
-[public docker registry](https://gitlab.mpcdf.mpg.de/nomad-lab/nomad-FAIR/container_registry/36){:target="\_blank"}.
-The a NOMAD image names looks like this:
+In order to update your Oasis to a newer software version, you usually should follow the <a href="https://github.com/FAIRmat-NFDI/nomad-distro-template?tab=readme-ov-file#updating-the-distribution-from-the-template" target="_blank" rel="noopener">update guide in the distribution template</a>. This makes sure that you get both the most recent version of the configuration files, and the `nomad-lab` Python package.
 
+You may also only update the `nomad-lab` Python package in your distribution by doing the following changes in the `pyproject.toml` file:
+
+```toml
+[project] 
+...
+dependencies = ["nomad-lab[parsing, infrastructure]==<version-number>"]
+...
+dev = ["nomad-lab[parsing, infrastructure, dev]==<version-number>"]
+...
 ```
-gitlab-registry.mpcdf.mpg.de/nomad-lab/nomad-fair:v1.2.0
-```
-
-The version tag (e.g. `v1.2.0`) follows **semantic versioning** (`major.minor.patch`). Images
-released under a version tag do not change. There are also variable tags like
-`stable`, `latest`, and `develop`. The image tag for recent feature branches use a
-encoded variant of the respective merge request name. It is generally the safes to use
-version tags.
-
-Our semantic interpretation of **"minor"** is the following:
-
-- there are only additions to programming interfaces and config options
-- NOMAD will still operate on existing data, but **the structure of newly processed data might change**
-- minor version might introduce new features that are only available after certain
-  actions [migration steps](#migration-steps).
-
-A road-map for major features can be found on our homepage [here](https://nomad-lab.eu/nomad-lab/features.html){:target="\_blank"}. You'll find a detailed change log in the source code [here](https://gitlab.mpcdf.mpg.de/nomad-lab/nomad-FAIR/-/blob/develop/CHANGELOG.md){:target="\_blank"}.
-
-## Configuration versions
-
-Depending on the versions you need to update your docker-compose or
-NOMAD configuration. This might be necessary for breaking changes, or advisable to
-activate new features. Therefore, it is important to understand that the
-installations files that run NOMAD (e.g. `docker-compose.yaml` or `nomad.yaml`) are independent
-of the NOMAD image and they won't automatically change just because you use a new image.
-
-We will list respective changes and guides under [migration steps](#migration-steps) below.
 
 ## Data versions
 
@@ -67,12 +47,12 @@ For changing the minor or major version, please check the [migration steps](#mig
 
 ### to 1.2.2
 
-We upgraded the Jupyterhub version used for NORTH from 1.0.2 to 4.0.2. By default the
-Jupyterhub database is persisted in the `nomad_oasis_north` container. If you want to
+We upgraded the JupyterHub version used for NORTH from 1.0.2 to 4.0.2. By default the
+JupyterHub database is persisted in the `nomad_oasis_north` container. If you want to
 keep the database (e.g. to not loose any open tools), you will have to upgrade the database.
 Update the NOMAD docker image version and restart the Oasis like this:
 
-```
+```sh
 docker compose down
 docker compose pull
 docker compose run north python -m jupyterhub upgrade-db
@@ -82,7 +62,7 @@ docker compose up -d
 Alternatively, you can delete the `nomad_oasis_north` container and start with a fresh
 database. Make sure that all north tools are stopped and removed.
 
-```
+```sh
 docker compose down
 docker rm nomad_oasis_north
 docker compose pull
@@ -93,16 +73,16 @@ docker compose up -d
 
 - We introduced the plugin mechanism. There are now more options to control which schemas
   and parsers are available in your installation. By default all the existing and shipped
-  schemas and parsers are enabled. See also [here](configure.md#plugins).
+  schemas and parsers are enabled. See also [Configure > Plugins](configure.md#plugins).
 
-- We changed the archive file format. [Re-processing](admin.md#re-processing) might yield better performance.
+- We changed the archive file format. [Re-processing](administer.md#re-processing) might yield better performance.
 
 - Parsers are now using a different workflow model and the UI now includes a
   workflow card on the overview page of entries with workflows for the new model.
-  [Re-processing](admin.md#re-processing) all data will enable this feature for old data. Any analysis build on
+  [Re-processing](administer.md#re-processing) all data will enable this feature for old data. Any analysis build on
   the old workflow model, might not work for new data.
 
-- We introduce the _log-transfer_ service. This is currently an opt-in feature.
+- We introduce the *log-transfer* service. This is currently an opt-in feature.
 
 ### from 0.8.x to 1.x
 

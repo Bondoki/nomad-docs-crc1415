@@ -21,13 +21,13 @@ Some key advantages of using plugins:
 There are three core components to the plugin system:
 
 - **Distributions** define lists of plugins and their version. A distribution is a small
-  Git and Python project that maintains a list of plugin dependencies in its `pyproject.toml`. We provide a [template repository](https://github.com/FAIRmat-NFDI/nomad-distro-template)
+  Git and Python project that maintains a list of plugin dependencies in its `pyproject.toml`. We provide a [template repository](https://github.com/FAIRmat-NFDI/nomad-distro-template){:target="_blank" rel="noopener"}
   for a quick start into creating distributions.
-- **Plugins** are Git and Python projects that contain one or many _entry points_.
-  We provide a [template repository](https://github.com/FAIRmat-NFDI/nomad-plugin-template)
+- **Plugins** are Git and Python projects that contain one or many *entry points*.
+  We provide a [template repository](https://github.com/FAIRmat-NFDI/nomad-plugin-template){:target="_blank" rel="noopener"}
   for a quick start into plugin development.
 - **Entry points** are individual contributions (e.g. parsers, schemas, or apps)
-  which are defined using a feature of Python called [_entry points_](https://setuptools.pypa.io/en/latest/userguide/entry_point.html).
+  which are defined using a feature of Python called [*entry points*](https://setuptools.pypa.io/en/latest/userguide/entry_point.html){:target="_blank" rel="noopener"}.
 
 <figure markdown style="width: 100%">
   ``` mermaid
@@ -59,13 +59,12 @@ This architecture allows plugin developers to freely choose a suitable granulari
 
 Plugin entry points represent different types of customizations that can be added to a NOMAD installation. The following plugin entry point types are currently supported:
 
-- [APIs](../howto/plugins/apis.md)
-- [Apps](../howto/plugins/apps.md)
-- [Example uploads](../howto/plugins/example_uploads.md)
-- [Normalizers](../howto/plugins/parsers.md)
-- [Parsers](../howto/plugins/parsers.md)
-- [Schema packages](../howto/plugins/schema_packages.md)
-
+- [APIs](../howto/plugins/types/apis.md)
+- [Apps](../howto/plugins/types/apps.md)
+- [Example uploads](../howto/plugins/types/example_uploads.md)
+- [Normalizers](../howto/plugins/types/normalizers.md)
+- [Parsers](../howto/plugins/types/parsers.md)
+- [Schema packages](../howto/plugins/types/schema_packages.md)
 
 Entry points contain **configuration**, but also a **resource**, which lives in a separate Python module. This split enables lazy-loading: the configuration can be loaded immediately, while the resource is loaded later when/if it is required. This can significantly improve startup times, as long as all time-consuming initializations are performed only when loading the resource. This split also helps to avoid cyclical imports between the plugin code and the `nomad-lab` package.
 
@@ -81,11 +80,11 @@ mypackage = "nomad_example.schema_packages:mypackage"
 
 Here it is important to use the `nomad.plugin` group name in the `project.entry-points` header. The value on the right side (`"nomad_example.schema_packages:mypackage"`) must be a path pointing to a plugin entry point instance inside the python code. This unique key will be used to identify the plugin entry point when e.g. accessing it to read some of it's configuration values. The name on the left side (`mypackage`) can be set freely.
 
-You can read more about how to write different types of entry points in their dedicated documentation pages or learn more about the [Python entry point mechanism](https://setuptools.pypa.io/en/latest/userguide/entry_point.html).
+You can read more about how to write different types of entry points in their dedicated documentation pages or learn more about the [Python entry point mechanism](https://setuptools.pypa.io/en/latest/userguide/entry_point.html){:target="_blank" rel="noopener"}.
 
 ### Plugin configuration
 
-The plugin entry point configuration is an instance of a [`pydantic`](https://docs.pydantic.dev/latest/) model. This base model may already contain entry point-specific fields (such as the file extensions that a parser plugin will match) but it is also possible to extend this model to define additional fields that control your plugin behaviour.
+The plugin entry point configuration is an instance of a [`pydantic`](https://docs.pydantic.dev/latest/){:target="_blank" rel="noopener"} model. This base model may already contain entry point-specific fields (such as the file extensions that a parser plugin will match) but it is also possible to extend this model to define additional fields that control your plugin behaviour.
 
 Here is an example of a new plugin entry point configuration class and instance for a parser, that has a new custom `parameter` configuration added as a `pydantic` `Field`:
 
@@ -164,12 +163,12 @@ Entry points are like pre-defined connectors or hooks that allow the main system
   <figcaption>NOMAD interaction with a plugin.</figcaption>
 </figure>
 
-1.  When NOMAD starts, it scans for plugin entry points defined under the `nomad.plugin` group in all of the Python packages that have been installed.
-2.  The plugin returns all entry points that it has registered in `pyproject.toml` under the `nomad.plugin` group. This only loads the configuration, but does not yet load the resource, i.e. main Python implementation.
-3.  When NOMAD needs to load the actual resource for an entry point (e.g. a parser), loads it by using the configuration instance.
-4.  When the resource is being loaded, the entry point may ask for any configuration overrides that may have been set in `nomad.yaml`.
-5.  NOMAD will return the final validated configuration that contains the default values and possible overrides.
-6.  The plugin loads and returns the resource using the final configuration. This typically involves creating an instance of a specific class, e.g. `Parser` in the case of parser entry points.
+1. When NOMAD starts, it scans for plugin entry points defined under the `nomad.plugin` group in all of the Python packages that have been installed.
+2. The plugin returns all entry points that it has registered in `pyproject.toml` under the `nomad.plugin` group. This only loads the configuration, but does not yet load the resource, i.e. main Python implementation.
+3. When NOMAD needs to load the actual resource for an entry point (e.g. a parser), loads it by using the configuration instance.
+4. When the resource is being loaded, the entry point may ask for any configuration overrides that may have been set in `nomad.yaml`.
+5. NOMAD will return the final validated configuration that contains the default values and possible overrides.
+6. The plugin loads and returns the resource using the final configuration. This typically involves creating an instance of a specific class, e.g. `Parser` in the case of parser entry points.
 
 ## Learn how to write plugins
 

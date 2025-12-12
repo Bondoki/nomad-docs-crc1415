@@ -5,19 +5,16 @@ Build upon your understanding of NOMAD's features with domain-specific examples 
 <div markdown="block" class="home-grid">
 <div markdown="block">
 
-### Computational data
+## Computational data
 
 Historically a repository for Density Functional Theory calculations, NOMAD now supports a wide range of computational methodologies including advanced many-body calculations and classical molecular dynamics simulations, as well as complex simulation workflows.
 
-- [Quick Start: Uploading computational data](./computational_data/uploading.md)
-- [Standard and custom computational workflows](./computational_data/workflows.md)
+- [NOMAD Basics: A Computational Perspective](./computational_data/basics.md)
 - [Guide to computational MetaInfo](./computational_data/metainfo.md)
 - [Guide to computational schema plugins](./computational_data/schema_plugins.md)
 - [Guide to computational parser plugins](./computational_data/parser_plugins.md)
-- H5MD: Uploading custom molecular dynamics data
-    - [How-to](./computational_data/h5md_howto.md)
-    - [Explanation](./computational_data/h5md_expl.md)
-    - [Reference](./computational_data/h5md_ref.md)
+- [Frequently Asked Questions](./computational_data/faqs.md)
+
 <!--
 #### subcategory 1
 - links...
@@ -27,7 +24,7 @@ Historically a repository for Density Functional Theory calculations, NOMAD now 
 </div>
 <div markdown="block">
 
-### Experimental data
+## Experimental data
 
 Thanks to key activities of the FAIRmat project, NOMAD also supports a set of parsing capabilities for standardizing data from materials characterization experiments.
 
@@ -41,7 +38,7 @@ Thanks to key activities of the FAIRmat project, NOMAD also supports a set of pa
 {{ category_tag(name='NX', href='./experiment_data/nexus.md', tooltip='Uses NeXus definitions', image='../assets/nexus-logo.ico', style='border-radius: 50%;')}}
 - [Atom probe tomography](./experiment_data/apm.md)
 {{ category_tag(name='NX', href='./experiment_data/nexus.md', tooltip='Uses NeXus definitions', image='../assets/nexus-logo.ico', style='border-radius: 50%;')}}
-- [Scanning tunneling spectroscopy](./experiment_data/stm.md)
+- [Scanning probe microscopy](./experiment_data/spm.md)
 {{ category_tag(name='NX', href='./experiment_data/nexus.md', tooltip='Uses NeXus definitions', image='../assets/nexus-logo.ico', style='border-radius: 50%;')}}
 - [pynxtools](./experiment_data/pynxtools.md)
 {{ category_tag(name='NX', href='./experiment_data/nexus.md', tooltip='Uses NeXus definitions', image='../assets/nexus-logo.ico', style='border-radius: 50%;')}}
@@ -51,7 +48,17 @@ Thanks to key activities of the FAIRmat project, NOMAD also supports a set of pa
 
 <div markdown="block">
 
+### Use Cases
+
+NOMAD's plugin system has enabled a growing community of NOMAD users customizing the software to support specific use-case data and pipelines. This section highlights some of the bigger use-case projects.
+
+- [nomad-catalysis](./use_cases/catalysis_app.md)
+{{ category_tag(name='plugin', href='../explanation/plugin_system.md', tooltip='Uses NOMAD plugin mechanism', image='../assets/nomad-plugin-logo.svg')}}
+- [nomad-neb-workflows](./use_cases/neb_workflows.md)
+{{ category_tag(name='plugin', href='../explanation/plugin_system.md', tooltip='Uses NOMAD plugin mechanism', image='../assets/nomad-plugin-logo.svg')}}
+
 </div>
+
 </div>
 
 <h2>One last thing</h2>
