@@ -1,6 +1,8 @@
 # `nomad-docs`
 
-This repository contains the documentation for the central NOMAD distribution.
+This repository hosts all official documentation for the NOMAD platform — including user guides, developer docs, and API references. It supports both users and developers working with NOMAD and NOMAD Oasis.
+
+See the releases for different versions of the documentation (from v1.4.0 onwards they are synced with NOMAD versions).
 
 ## Contributing
 
@@ -9,6 +11,8 @@ This repository contains the documentation for the central NOMAD distribution.
 - For internal contributions (write access to the repo required), please open a pull request (PR) with your changes. **At least one review from a FAIRmat co-worker is required before merging**. If you are not sure who to assign, please ask in the PR conversation by tagging @ahm531 or @JFRudzinski.
 
 - For external contributions, please follow the [External Contribution Instructions](#external-contribution-instructions)
+
+- Any contributions that should end up in the next documentation release should target the `develop` branch. When a new version of the NOMAD software is released, the current state of the `develop` branch will be merged into `main` with a corresponding version tag: this way the documentation can be synced with NOMAD versions. **Note that you should not merge documentation for features that will not be included in the next release**: keep them in another branch.
 
 ### Writing Guide
 
@@ -26,7 +30,7 @@ If you *do not* have an up-to-date Python installation (3.11 or 3.12), see [Help
 
 #### (a) Standalone
 
-##### On macOS and Linux`
+##### On macOS and Linux
 
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -36,8 +40,15 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ```powershell
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-Or, from PyPI:
 ```
+
+If installed via the standalone installer, `uv` can update itself to the latest version:
+
+```bash
+uv self update
+```
+
+Or, from PyPI:
 
 #### (b) With pip
 
@@ -49,12 +60,6 @@ pip install uv
 
 ```bash
 pipx install uv
-```
-
-If installed via the standalone installer, uv can update itself to the latest version:
-
-```bash
-uv self update
 ```
 
 ### 2. Run the Local Docs Server
@@ -133,7 +138,7 @@ git push origin my-feature-branch
 
 - Go to your fork on GitHub.
 - Click **"Compare & pull request"**.
-- Choose the base repo (`FAIRmat-NFDI/nomad-docs`) and target branch (e.g., `main`).
+- Choose the base repo (`FAIRmat-NFDI/nomad-docs`) and target branch (e.g., `develop`).
 - Describe your changes and submit the PR.
 
 > ✅ Your PR will be reviewed by the maintainers. You don’t need write access to contribute this way.

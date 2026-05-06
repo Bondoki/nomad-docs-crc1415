@@ -18,7 +18,6 @@ Use NOMAD to manage, explore, and analyze data.
 
 - [Upload and publish data for supported formats](manage/gui/upload.md)
 - [Enter data with ELNs](manage/gui/eln.md)
-- [Explore data](manage/gui/explore.md)
 - [Analyze data in NORTH](manage/gui/north.md)
 - [Create custom workflows](manage/gui/workflows.md)
 - [Write a YAML schema package](manage/gui/yaml.md)
@@ -32,7 +31,7 @@ Use NOMAD to manage, explore, and analyze data.
 
 Use NOMAD's functionalities programmatically.
 
-[API Overview](manage/program/api.md){ .md-button .nomad-button .center}
+[API Overview](manage/program/api.md){:.md-button .nomad-button .center}
 
 - [Download data](manage/program/download.md)
 - [Publish data using Python](manage/program/publish_python.md)
@@ -48,7 +47,7 @@ Use NOMAD's functionalities programmatically.
 These how-to guides direct advanced users, data stewards, and NOMAD application administrators to
 build robust and powerful customized NOMAD support with Python-based plugin software.
 
-[Plugins Overview](plugins/plugins.md){ .md-button .nomad-button .center}
+[Plugins Overview](plugins/plugins.md){:.md-button .nomad-button .center}
 
 <div markdown="block" class="home-grid">
 <div markdown="block">
@@ -61,6 +60,7 @@ NOMAD plugins are connect with the core software via "entry points". There are v
 - [Apps](plugins/types/apps.md)
 - [Example uploads](plugins/types/example_uploads.md)
 - [Normalizers](plugins/types/normalizers.md)
+- [NORTH tools](plugins/types/north_tools.md)
 - [Parsers](plugins/types/parsers.md)
 - [Schema packages](plugins/types/schema_packages.md)
 
