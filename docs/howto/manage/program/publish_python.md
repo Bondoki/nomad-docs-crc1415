@@ -15,7 +15,7 @@
 
 ## Uploading, changing metadata, and publishing via python API
 
-The [NOMAD API](https://nomad-lab.eu/prod/rae/docs/api.html){:target="_blank" rel="noopener"} allows uploading, publishing, etc. using a local python environment, as an alternative to the NOMAD GUI. An overview of all API functionalities is provided in [How to use the API](api.md)
+The [NOMAD API](api.md) allows uploading, publishing, etc. using a local python environment, as an alternative to the NOMAD GUI. An overview of all API functionalities is provided in [How to use the API](api.md)
 
 We have prepare some simple python functions to facilitate use of this API. For use as demonstrated below, copy the following code into a file called NOMAD_API.py:
 
@@ -26,8 +26,8 @@ import requests
 def get_authentication_token(nomad_url, username, password):
     '''Get the token for accessing your NOMAD unpublished uploads remotely'''
     try:
-        response = requests.get(
-            nomad_url + 'auth/token', params=dict(username=username, password=password), timeout=10)
+        response = requests.post(
+            nomad_url + 'auth/token', data=dict(username=username, password=password, grant_type='password'), timeout=10)
         token = response.json().get('access_token')
         if token:
             return token

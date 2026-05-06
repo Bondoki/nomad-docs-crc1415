@@ -156,10 +156,10 @@ The following command can be used to install NOMAD.
     The -c flag restricts the installation of dependencies to the versions specified in the provided requirements file, ensuring that only those versions are installed.
 
     ```shell
-    uv pip install -e .[parsing,infrastructure,dev] -c requirements-dev.txt
+    uv pip install -e .[infrastructure,dev] -c requirements-dev.txt
     ```
 
-    Install "default" plugins. TODO: This can be removed once we have proper proper distribution
+    Install "default" plugins. TODO: This can be removed once we have proper distribution
     ```shell
     uv pip install -r requirements-plugins.txt
     ```
@@ -372,7 +372,7 @@ installed with:
 npm install -g configurable-http-proxy
 ```
 
-JupyterHub is a separate application. You can run JuypterHub similar to the other part:
+JupyterHub is a separate application. You can run JupyterHub similar to the other part:
 
 ```shell
 nomad admin run hub
