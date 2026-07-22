@@ -22,9 +22,9 @@ jobs:
   lint-markdown:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
-      - uses: DavidAnson/markdownlint-cli2-action@v23
+      - uses: DavidAnson/markdownlint-cli2-action@v24
         with:
           config: .github/workflows/configs/nomad.markdownlint.jsonc
           globs: |
@@ -34,10 +34,10 @@ jobs:
   check-links:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Check links in markdown files
-        uses: UmbrellaDocs/action-linkspector@v1
+        uses: UmbrellaDocs/action-linkspector@v1.5.4
         with:
           config_file: .github/workflows/configs/.linkspector.yml
           filter_mode: "nofilter" # check all files (not just added)
@@ -45,7 +45,7 @@ jobs:
   test-docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Install uv
         uses: astral-sh/setup-uv@v7
